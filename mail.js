@@ -7,5 +7,5 @@ const reciever={
     from: process.env.EMAIL
 }
 // send function which import from .index.js file
-sendEmail();
+sendEmail(reciever);
 
