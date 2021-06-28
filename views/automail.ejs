@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AMail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        // let file = document.getElementById('to')
+        // file.addEventListener('change', importFile);
+
+        function importFile(evt) {
+            let contents;
+            let ans;
+            let file = document.getElementById('to')
+            let f = file.files.length
+
+            if (f) {
+                var r = new FileReader();
+                r.onload = e => {
+                    contents = processExcel(e.target.result);
+                    ans = JSON.parse(contents)
+                    console.dir(ans)
+                    const p = document.getElementById('hiddenField');
+                    p.value = ans.Sheet1;
+                    console.log(p.value)
+                    document.getElementById("myForm").submit();
+                }
+                r.readAsBinaryString(file.files[0]);
+            } else {
+                console.log("Failed to load file");
+            }
+
+        }
+        function processExcel(data) {
+            let workbook = XLSX.read(data, {
+                type: 'binary'
+            });
+
+            let firstSheet = workbook.SheetNames[0];
+            let dat = to_json(workbook);
+            return dat
+        };
+        function to_json(workbook) {
+            let result = {};
+            workbook.SheetNames.forEach(function (sheetName) {
+                let roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
+                    header: 1
+                });
+                if (roa.length) result[sheetName] = roa;
+            });
+            let res = JSON.stringify(result, 2, 2);
+            return res;
+        };
+        // function mysubmit() {
+        //     const p = document.getElementById('hiddenField');
+        //     p.value = ans;
+        //     console.log(p.value)
+        //     document.getElementById("myForm").submit();
+        // }
+            //document.getElementById('dataviewer').innerHTML='<h5>'+contents+'</h5>'
+    </script>
+
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 1em 10em;
+            background-color: rgb(177, 211, 238);
+        }
+
+        h1,
+        h3 {
+            text-align: center;
+            color: rgb(32, 95, 230)
+        }
+
+        @media screen and (max-width: 650px) {
+            body {
+                margin: 1em 1em;
+            }
+        }
+    </style>
+    <h1> WELCOME TO AUTOMAIL</h1>
+    <h3>Create Your Mail As Simple As Can </h3>
+    <h3>Just Fill The Form And You Done </h3>
+    <form id="myForm" action="info" method="post">
+        <div class="form-group">
+            <input type='hidden' id='hiddenField' name='hiddenField' value='' />
+            <label for="to">TO</label>
+            <input type="file" class="form-control" id="to" name='to' aria-describedby="emailHelp"
+                placeholder="Upload EXCEL/CSV File"
+                accept=".csv,application/vnd.ms-excel,.xlt,application/vnd.ms-excel,.xla,application/vnd.ms-excel,.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xltx,application/vnd.openxmlformats-officedocument.spreadsheetml.template,.xlsm,application/vnd.ms-excel.sheet.macroEnabled.12,.xltm,application/vnd.ms-excel.template.macroEnabled.12,.xlam,application/vnd.ms-excel.addin.macroEnabled.12,.xlsb,application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="form">FROM</label>
+            <input type="email" class="form-control" id="from" name='from' placeholder="Sender Email ID" required>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="cc">CC</label>
+            <input type="email" class="form-control" id="cc" name='cc' placeholder="CC" required>
+        </div>
+        <div class="form-group">
+            <label for="subjet">SUBJECT</label>
+            <input type="text" class="form-control" id="subject" name='subject' placeholder="subject">
+        </div>
+        <div class="form-group">
+            <label for="body">CONTENT</label>
+            <textarea class="form-control" id="body" name='body'></textarea>
+        </div>
+        <input type="submit" onclick="importFile()" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+</body>
+
+</html>

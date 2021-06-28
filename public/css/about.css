@@ -1,0 +1,218 @@
+body{
+font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif;
+font-style:normal;}
+
+h1{font-style:monospace;
+font-size:200%;
+color:rgb(30, 65, 98);
+line-height:100%;
+font-weight:700;}
+#one{
+ height:80%; 
+
+}
+#simple1{
+padding:70px 0px 0px 70px;
+}
+#simple2{
+padding:0px 70px 70px 0px;
+}
+#two{
+background-color:rgb(239, 243, 247);
+height:70%;
+padding-top:27%;
+font-size:200%;
+font-weight:400;
+color:rgb(30, 65, 98);
+
+}
+
+#three{
+background-color:rgb(0, 126, 101);}
+
+p{font-size:300%;
+line-height:50px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-style: inherit;
+color:rgb(0, 136, 204);
+font-weight:700;
+padding-top:6%;
+}
+
+h3{
+color:rgb(0, 68, 102);
+font-weight:400;
+font-size:170%;}
+
+h6{font-weight:lighter;
+line-height:10px;}
+
+#start{
+  padding:15px 40px;
+background-color:rgb(17, 122, 201);
+color:white;
+font-size:15px;
+border-radius:8px;
+border:0px solid white;
+}
+
+#start:hover{
+background-color:rgba(17, 122, 201,0.6);
+cursor:pointer;}
+
+.parallax1, .parallax2, .parallax3 ,.parallax4{
+  position: relative;
+  opacity: 0.7;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax1 {
+  background-image: url("../gallery/parallax1.jpg");
+  min-height: 150%;
+  border: 0 solid white ; 
+  border-radius:700px 0 0 0;
+}
+
+.parallax2 {
+  background-image: url("../gallery/parallax2.jpg");
+  min-height: 400px;
+}
+
+.parallax3 {
+  background-image: url("../gallery/parallax3.jpg");
+  min-height: 400px;
+}
+
+.parallax4 {
+  background-image: url("../gallery/parallax1.jpg");
+  min-height: 150%;
+  border: 0 solid white ; 
+  border-radius:0 0 700px 0;
+}
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  /* background-color: #111; */
+  color: rgb(0, 0, 0);
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+.textparallax{
+text-align:justify;
+
+font-size:16px;
+background-color: rgb(237, 242, 248);
+color:rgb(30, 65, 98);
+padding:5% 7%;
+}
+
+#four{
+  background-color: rgb(10,75,120);
+  height:100%;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: auto auto;
+  grid-gap:50px;
+  background-color:white;
+  padding:8%;
+  border: 1px solid white;
+}
+.grid > div{
+  border: 1px solid white;
+  padding:10%;
+   padding-left:13%;
+}
+#share{
+   width:100%;
+  min-height:100%;
+}
+
+#secure{
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 30px 0 rgba(0, 0, 0, 0.2);  
+  width:100%;
+  min-height:100%;
+  margin-bottom:18%;
+}
+#giphy span{
+  text-align:justify;
+  color:rgb(124, 146, 86);
+  font-weight:lighter;
+  line-height:150%;
+  font-size: 20px;
+  
+}
+
+#follow{
+  position: relative;;
+  padding-top:17%;
+  height:80%;
+  background-color: rgb(237, 242, 248);
+  color:rgb(30, 65, 98);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+
+  a{
+    color: slategrey;
+    text-decoration: none;
+    font-size: 14px;
+
+  }
+  h1#giphy{
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: darkolivegreen;
+}
+@media screen and (max-width: 650px) {
+body{margin:0px;}
+#one{height:60%;
+}
+#two{height:50%;}
+#four{height:auto;}
+p{
+  font-size:170%;
+  padding:20px;
+  font-family: cursive;
+  line-height:unset;
+  padding-top: 1%;}
+h3{
+  font-size:130%;}
+#start{
+  padding:15px 30px;
+}
+#simple1{
+  padding:0px 0px 0px 0px;
+  }
+  #simple2{
+  padding:0px 0px 0px 0px;
+  }
+.parallax1,.parallax4{
+  border-radius: 0;
+  }
+.parallax1, .parallax2, .parallax3 ,.parallax4{
+background-size: unset;}
+.parallax1 .caption span.border{
+  letter-spacing: unset;
+ font-size:20px;
+}
+.grid{
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+}
+#giphy span{
+  font-size: 15px;
+  font-weight:lighter;
+  color: rgb(124, 146, 86);
+}
+}
